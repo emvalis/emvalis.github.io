@@ -607,7 +607,7 @@ CMDS.push({t:'Kartları sırala',h:'düzen',f:toggleSort},{t:'Sıralamayı varsa
 
 /* ─── Geri bildirim ─── */
 const FEEDBACK_URL='https://emvalis.github.io/geri-bildirim/';
-function openFeedback(){location.href=FEEDBACK_URL}
+function openFeedback(){window.open(FEEDBACK_URL,'_blank','noopener')}
 $('#fbBtn').onclick=openFeedback;
 CMDS.push({t:'Geri bildirim gönder',h:'iletişim',f:openFeedback});
 
