@@ -315,7 +315,8 @@ body.sorting .card.dragging{opacity:.35}
 /* ─── Veri ─── */
 const MODULE_URLS={
   mesai:'https://emvalis.github.io/fazla-mesai/',
-  rotasyon:'https://emvalis.github.io/rotasyon/'
+  rotasyon:'https://emvalis.github.io/rotasyon/',
+  hisseli:'https://emvalis.github.io/hisseli-satis/'
 };
 
 const ICONS={
@@ -326,12 +327,14 @@ parsel:'<path d="M3 7l7-3 4 1.5L21 4v12l-7 4-4-1.5L3 20z"/><path d="M10 4v14.5M1
  mesai:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/>',
  rot:'<path d="M20 8a8 8 0 0 0-14-2L4 8M4 3v5h5M4 16a8 8 0 0 0 14 2l2-2M20 21v-5h-5"/>',
  hisse:'<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/>',
- etiket:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>'};
+ etiket:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>',
+ pasta:'<path d="M12 3v9h9"/><path d="M20.5 15A9 9 0 1 1 9 3.5"/>'};
 function parcel(i){let s=i*9301+49297;const R=()=>(s=(s*9301+49297)%233280)/233280,n=5+i%3,p=[];for(let k=0;k<n;k++){const a=k/n*Math.PI*2+R()*.5,r=14+R()*8;p.push([35+Math.cos(a)*r*1.5,23+Math.sin(a)*r])}return `<polygon points="${p.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' ')}"/>`+p.map(q=>`<circle cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="1.8"/>`).join('')}
 const MODS=[
  {id:'ilmuhaber',n:'İlmuhaber',c:'Belge',i:'belge',soon:true ,d:'İlmühaber belgelerini tek tıkla otomatik oluşturun.',k:'ilmuhaber ilmühaber tapu sicil muhtar azalar kimlik tespit'},
  {id:'komsu',n:'Komşu Parsel Tutanağı',c:'Belge',i:'parsel',d:'Komşu parsellere ait tanık tutanaklarını tek tıkla otomatik oluşturun.',k:'komşu parsel tutanak'},
- {id:'kat',n:'Kat İrtifakı',c:'Belge',i:'kat',d:'Kat irtifakı ve kat mülkiyeti işlemleri için Takbis uyumlu KİKM dosyası hazırlayın.',k:'irtifak mülkiyet takbis kikm dosya'},
+ {id:'hisseli',n:'Hisseli Satış Hesaplama',c:'Tapu',i:'pasta',d:'Hisseli satışlarda alıcı paylarını tam kesirle hesaplayın, Takbis için pay ve payda değerlerini alın.',k:'hisseli satış hesaplama pay payda çıkartma oran m2 alıcı satıcı takbis'},{id:'kat',n:'Kat İrtifakı',c:'Belge',i:'kat',d:'Kat irtifakı ve kat mülkiyeti işlemleri için Takbis uyumlu KİKM dosyası hazırlayın.',k:'irtifak mülkiyet takbis kikm dosya'},
+ 
  {id:'imar',n:'İmar',c:'İmar',i:'imar',soon:true ,d:'Maliklere ait özel sorgu dosyalarını Netcad imar modülüne yüklenecek formata dönüştürün.',k:'kadastro takbis netcad malik özel sorgu veri birleştir',
   subs:[['A — Özel Sorgu','Netcad imar modülü formatında çıktı'],['B — Takbis Kadastro Veri Birleştir','Kadastro verilerini tek tabloda toplar'],['C — Takbis İmar Veri Birleştir','İmar verilerini tek tabloda toplar']]},
  {id:'mesai',n:'Fazla Mesai',c:'Personel',i:'mesai',d:'Personel fazla mesai çizelgelerini tek tıkla hesaplayın ve raporlayın.',k:'çizelge rapor'},
