@@ -622,7 +622,7 @@ CMDS.push({t:'Geri bildirim gönder',h:'iletişim',f:openFeedback});
 (function(){
 const loader=$('#introLoader');
 const last=+ls.raw('emv_intro_ts')||0;
-if(Date.now()-last<60*60*1000){loader.remove();startReveal();return}
+if(Date.now()-last<5*60*60*1000){loader.remove();startReveal();return}
 try{localStorage.setItem('emv_intro_ts',Date.now())}catch(e){}
 
  document.body.style.overflow=document.documentElement.style.overflow='hidden';document.body.classList.add('intro-on');
@@ -682,10 +682,11 @@ setTimeout(leave,2000);
 
 /* ─── Intro sayacı ─── */
 (function(){
- const el=$('#introLeft'),T=30*60*1000;
+const el=$('#introLeft'),T=5*60*60*1000;
  function tick(){
   const left=T-(Date.now()-(+ls.raw('emv_intro_ts')||0));
-  el.textContent=left>0?'Tanıtım ekranı için kalan: '+Math.ceil(left/60000)+' dk':'';
+const m=Math.ceil(left/60000);
+el.textContent=left>0?'Tanıtım ekranı için kalan: '+(m>=60?Math.floor(m/60)+' sa '+(m%60)+' dk':m+' dk'):'';
  }
  tick();setInterval(tick,15000);
 })();  
