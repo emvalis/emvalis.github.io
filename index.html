@@ -172,6 +172,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border2);backgroun
 .fi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .fl{font-size:.85rem;font-weight:800;letter-spacing:-.04em;color:var(--txt2)}.fl b{color:var(--accent)}
 .fc{font-size:.7rem;color:var(--txt3);line-height:1.6;text-align:right}
+.il{display:inline-block;margin-top:4px;font:500 .6rem 'JetBrains Mono',monospace;color:var(--txt3);opacity:.55}  
 .reset{font:.6rem 'JetBrains Mono',monospace;color:#B45309;background:none;border:none;cursor:pointer;opacity:.6}.reset:hover{opacity:1}
 @media(max-width:900px){.card{width:calc((100% - 16px)/2)}.hud,.ruler,.cross{display:none}.hero-art{display:none}}
 @media(max-width:620px){.bar{padding:0 14px}.page{padding:20px 12px 80px}.grid{gap:12px}.card{width:100%}.btn span,.kbd{display:none}.bar-search{max-width:150px}.bar-search-inp{padding:0 28px 0 32px;font-size:.72rem}.bar-search-count{display:none!important}.bar-search:focus-within{max-width:calc(100% - 120px)}.hero{padding:22px 18px}.fc{text-align:left}footer{padding:18px 16px}.hint-kbd{display:none}}
@@ -279,7 +280,7 @@ body.sorting .card.dragging{opacity:.35}
 
 <footer><div class="fi">
   <div class="fl">Em<b>valis</b></div>
-<div class="fc">© 2026 Emvalis. Tüm hakları saklıdır.<br>İzinsiz kullanılamaz, kopyalanamaz veya dağıtılamaz.</div>
+<div class="fc">© 2026 Emvalis. Tüm hakları saklıdır.<br>İzinsiz kullanılamaz, kopyalanamaz veya dağıtılamaz.<br><span class="il" id="introLeft"></span></div>
 </div></footer>
 
 <!-- INTRO -->
@@ -677,6 +678,18 @@ setTimeout(leave,2000);
  };
  document.head.appendChild(sc);
 })();
+
+
+/* ─── Intro sayacı ─── */
+(function(){
+ const el=$('#introLeft'),T=30*60*1000;
+ function tick(){
+  const left=T-(Date.now()-(+ls.raw('emv_intro_ts')||0));
+  el.textContent=left>0?'Tanıtım ekranı için kalan: '+Math.ceil(left/60000)+' dk':'';
+ }
+ tick();setInterval(tick,15000);
+})();  
+  
 </script>
 </body>
 </html>
