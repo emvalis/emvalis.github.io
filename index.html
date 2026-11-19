@@ -619,7 +619,10 @@ CMDS.push({t:'Geri bildirim gönder',h:'iletişim',f:openFeedback});
 
 /* ═══ INTRO (Three.js yalnızca gerekirse yüklenir) ═══ */
 (function(){
- const loader=$('#introLoader'),skip=ls.raw('emv_intro_skip');
+const loader=$('#introLoader');
+const last=+ls.raw('emv_intro_ts')||0;
+if(Date.now()-last<30*60*1000){loader.remove();startReveal();return}
+try{localStorage.setItem('emv_intro_ts',Date.now())}catch(e){}
 
  document.body.style.overflow=document.documentElement.style.overflow='hidden';document.body.classList.add('intro-on');
  const g=id=>document.getElementById(id);
