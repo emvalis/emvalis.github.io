@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://emvalis.github.io/sitemap.xml
